@@ -51,6 +51,8 @@ public class LanguageManager {
             messages.put("teleporting", "{prefix}正在传送至 %s");
             messages.put("teleportingOther", "正在将 %s 传送至 %s");
             messages.put("serverNotExist", "{prefix}服务器 %s 不存在!");
+            messages.put("teleportingByOther", "{prefix}正在被传送至 %s");
+
         } else if ("zh_hant".equalsIgnoreCase(language)) {
             // 繁體中文消息
             messages.put("TranslationContributors", "當前語言: 繁體中文 (貢獻者: Zhang1233 & TongYi-Lingma LLM)");
@@ -72,6 +74,7 @@ public class LanguageManager {
             messages.put("teleporting", "{prefix}正在傳送至 %s");
             messages.put("teleportingOther", "正在將 %s 傳送至 %s");
             messages.put("serverNotExist", "{prefix}伺服器 %s 不存在！");
+            messages.put("teleportingByOther", "{prefix}正在被傳送至 %s");
 
         } else if ("en_us".equalsIgnoreCase(language)) {
             // English messages
@@ -94,6 +97,7 @@ public class LanguageManager {
             messages.put("teleporting", "{prefix}Teleporting to %s");
             messages.put("teleportingOther", "Teleporting %s to %s");
             messages.put("serverNotExist", "{prefix}Server %s does not exist!");
+            messages.put("teleportingByOther", "{prefix}Teleporting to %s");
             
         } else if ("ja_jp".equalsIgnoreCase(language)) {
             // 日本语消息
@@ -116,7 +120,8 @@ public class LanguageManager {
             messages.put("teleporting", "{prefix}%s にテレポート中");
             messages.put("teleportingOther", "%s を %s にテレポート中");
             messages.put("serverNotExist", "{prefix}サーバー %s は存在しません！");
-            
+            messages.put("teleportingByOther", "{prefix}%s にテレポート中");
+
         }
     }
 
