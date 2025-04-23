@@ -68,11 +68,13 @@ public class TeleportCommand implements CommandExecutor {
                 sender.sendMessage(String.format(getMessage("serverNotExist"), server));
                 return true;
             }
-            // 日志
             // 获取别名
             String serverNameConfig = MeowServerTP.getInstance().getConfig().getString("Server-list." + server + ".Name");
             String servername = serverNameConfig != null ? serverNameConfig : server;
+            // 执行者log
             sender.sendMessage(Color.GREEN + String.format(getMessage("teleportingOther"), targetPlayer.getName(), servername));
+            // 被传送者log
+            targetPlayer.sendMessage(String.format(getMessage("teleporting"), servername));
             // 执行传送           
             executeTeleport(targetPlayer, server, sender);
         } else {
