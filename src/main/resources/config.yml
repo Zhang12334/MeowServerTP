@@ -1,0 +1,21 @@
+# 语言（zh_hans / zh_hant / en_us / ja_jp）
+# Language, zh_hans / zh_hant / en_us / ja_jp
+language: zh_hans
+
+# 插件消息前缀
+# Plugin message prefix
+Prefix: "&6[MeowServerTP] &2"
+
+# 服务器列表 / Server list
+Server-list:
+  # 服务器名称 / Server name
+  lobby:
+    # 服务器别名(传送时显示) / Server alias
+    Name: "大厅Lobby"
+    # 玩家权限 / Player permission
+    # false 为不需要权限 / false for no permission
+    # 需要权限则填写对应权限节点即可，如 Permission: meowstp.lobby
+    # If you need permission, just fill in the permission node, such as Permission: meowstp.survival
+    Permission: false
+  survival:
+    Permission: meowstp.survival
