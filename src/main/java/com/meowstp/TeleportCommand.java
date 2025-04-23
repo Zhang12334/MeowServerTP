@@ -74,7 +74,7 @@ public class TeleportCommand implements CommandExecutor {
             // 执行者log
             sender.sendMessage(Color.GREEN + String.format(getMessage("teleportingOther"), targetPlayer.getName(), servername));
             // 被传送者log
-            targetPlayer.sendMessage(String.format(getMessage("teleporting"), servername));
+            targetPlayer.sendMessage(String.format(getMessage("teleportingByOther"), servername));
             // 执行传送           
             executeTeleport(targetPlayer, server, sender);
         } else {
