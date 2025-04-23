@@ -69,6 +69,9 @@ public class LanguageManager {
             messages.put("nopermission", "你沒有權限執行此命令!");
             messages.put("usage", "用法:");
             messages.put("notplayer", "只有玩家才能执行此命令!");
+            messages.put("teleporting", "{prefix}正在傳送至 %s");
+            messages.put("teleportingOther", "正在將 %s 傳送至 %s");
+            messages.put("serverNotExist", "{prefix}伺服器 %s 不存在！");
 
         } else if ("en_us".equalsIgnoreCase(language)) {
             // English messages
@@ -88,7 +91,10 @@ public class LanguageManager {
             messages.put("nopermission", "You do not have permission to execute this command!");
             messages.put("usage", "Usage:");
             messages.put("notplayer", "Only players can execute this command!");
-
+            messages.put("teleporting", "{prefix}Teleporting to %s");
+            messages.put("teleportingOther", "Teleporting %s to %s");
+            messages.put("serverNotExist", "{prefix}Server %s does not exist!");
+            
         } else if ("ja_jp".equalsIgnoreCase(language)) {
             // 日本语消息
             messages.put("TranslationContributors", "現在の言語: 日本語 (寄稿者: Zhang1233 & TongYi-Lingma LLM)");
@@ -107,7 +113,10 @@ public class LanguageManager {
             messages.put("nopermission", "このコマンドの実行に権限がありません!");
             messages.put("usage", "使用法:");
             messages.put("notplayer", "プレイヤーのみがこのコマンドを実行できます!");
-
+            messages.put("teleporting", "{prefix}%s にテレポート中");
+            messages.put("teleportingOther", "%s を %s にテレポート中");
+            messages.put("serverNotExist", "{prefix}サーバー %s は存在しません！");
+            
         }
     }
 
