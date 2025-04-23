@@ -18,4 +18,5 @@ Server-list:
     # If you need permission, just fill in the permission node, such as Permission: meowstp.survival
     Permission: false
   survival:
+    Name: "生存服Survival"
     Permission: meowstp.survival
