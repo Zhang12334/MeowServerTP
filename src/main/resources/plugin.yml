@@ -1,18 +1,34 @@
 name: MeowServerTP
+version: '1.0.2'
 main: com.meowstp.MeowServerTP
-version: 1.0.1
-api-version: 1.16
-depend:
-  - MeowLibs
+api-version: '1.20'
+depend: [MeowLibs]
+softdepend: [PlaceholderAPI]
 commands:
   mstp:
-    description: Cross-server teleport command
-    usage: /mstp tp <server> | /mstp send <player> <server>
-    permission: meowservertp.command.mstp
+    description: MeowServerTP主命令
+    usage: /<command> <tp|send|server> [参数]
+    aliases: [meowservertp]
+    permission: meowservertp.command.use
 permissions:
-  meowservertp.command.mstp:
-    description: /mstp
+  meowservertp.command.use:
+    description: 允许使用MeowServerTP的基本命令
     default: true
+  meowservertp.command.help:
+    description: 允许查看帮助信息
+    default: op
   meowservertp.command.send:
-    description: /mstp send
+    description: 允许使用传送他人的命令
+    default: op
+  meowservertp.command.send.all:
+    description: 允许使用传送所有玩家的命令
+    default: op
+  meowservertp.command.server.add:
+    description: 允许添加服务器到数据库
+    default: op
+  meowservertp.command.server.remove:
+    description: 允许从数据库删除服务器
+    default: op
+  meowservertp.command.server.list:
+    description: 允许查看服务器列表
     default: op
