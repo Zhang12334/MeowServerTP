@@ -11,8 +11,8 @@ Database:
   username: root
   password: password
 
-# 语言（zh_hans / zh_hant / en_us / ja_jp）
-# Language, zh_hans / zh_hant / en_us / ja_jp
+# 语言（zh_hans / zh_hant / en_us / ja_jp / de_de）
+# Language, zh_hans / zh_hant / en_us / ja_jp / de_de
 language: zh_hans
 
 # 插件消息前缀

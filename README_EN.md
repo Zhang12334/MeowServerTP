@@ -12,6 +12,7 @@
 | Traditional Chinese | zh_hant | ✅ Supported |
 | English | en_us | ✅ Supported |
 | Japanese | ja_jp | ✅ Supported |
+| German | de_de | ✅ Supported |
 
 Feel free to contact the developer to submit translations in other languages, and your name will be included in the acknowledgments!
 

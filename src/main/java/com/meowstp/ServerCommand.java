@@ -61,7 +61,7 @@ public class ServerCommand implements CommandExecutor, TabCompleter {
                 handleListCommand(sender);
                 return true;
             default:
-                sender.sendMessage(formatMessage(getMessage("usage.server")));
+                sender.sendMessage(formatMessage(getMessage("usage")));
                 return true;
         }
     }
@@ -92,7 +92,7 @@ public class ServerCommand implements CommandExecutor, TabCompleter {
         }
 
         if (args.length < 2) {
-            sender.sendMessage(formatMessage(getMessage("usage.server.add")));
+            sender.sendMessage(formatMessage(getMessage("usage")));
             return;
         }
 
@@ -131,7 +131,7 @@ public class ServerCommand implements CommandExecutor, TabCompleter {
         }
 
         if (args.length < 2) {
-            sender.sendMessage(formatMessage(getMessage("usage.server.remove")));
+            sender.sendMessage(formatMessage(getMessage("usage")));
             return;
         }
 
