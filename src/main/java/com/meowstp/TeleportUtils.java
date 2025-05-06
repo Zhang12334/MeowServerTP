@@ -8,7 +8,7 @@ import java.io.IOException;
 public class TeleportUtils {
     public static void teleport(Player player, String server, LanguageManager languageManager) {
         if (player == null) return;
-
+        
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         try (DataOutputStream out = new DataOutputStream(baos)) {
             out.writeUTF("Connect");

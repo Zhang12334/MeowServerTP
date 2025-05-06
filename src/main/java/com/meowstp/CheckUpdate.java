@@ -74,7 +74,7 @@ public class CheckUpdate {
 
         int responseCode = connection.getResponseCode();
         if (responseCode != 200) {
-            throw new Exception("HTTP 响应码: " + responseCode);
+            throw new Exception("HTTP Response: " + responseCode);
         }
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));

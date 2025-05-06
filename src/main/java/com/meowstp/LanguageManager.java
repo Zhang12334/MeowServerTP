@@ -60,6 +60,8 @@ public class LanguageManager {
             messages.put("serverAddFailed", "{prefix}添加服务器失败!");
             messages.put("serverRemoved", "{prefix}成功删除服务器 {server}");
             messages.put("serverRemoveFailed", "{prefix}删除服务器失败!");
+            messages.put("serverModified", "{prefix}成功修改服务器 {server}");
+            messages.put("serverModifyFailed", "{prefix}修改服务器失败!");
             messages.put("noServers", "{prefix}没有找到任何服务器!");
             messages.put("serverList", "{prefix}服务器列表:");
             messages.put("serverInfo", "  - %s (名称: %s, 权限: %s)");
@@ -78,6 +80,7 @@ public class LanguageManager {
                 "&e/mstp server list &r- 查看所有可用服务器\n" +
                 "&e/mstp server add <服务器配置名> [服务器显示名] [权限节点] &r- 添加新服务器\n" +
                 "&e/mstp server remove <服务器配置名> &r- 删除服务器\n" +
+                "&e/mstp server modify <服务器配置名> <新显示名> [新权限节点] &r- 修改服务器信息\n" +
                 "&e==========================================");
         } else if ("zh_hant".equalsIgnoreCase(language)) {
             // 繁體中文消息
@@ -109,6 +112,8 @@ public class LanguageManager {
             messages.put("serverAddFailed", "{prefix}添加伺服器失敗!");
             messages.put("serverRemoved", "{prefix}成功刪除伺服器 {server}");
             messages.put("serverRemoveFailed", "{prefix}刪除伺服器失敗!");
+            messages.put("serverModified", "{prefix}成功修改伺服器 {server}");
+            messages.put("serverModifyFailed", "{prefix}修改伺服器失敗!");
             messages.put("noServers", "{prefix}沒有找到任何伺服器!");
             messages.put("serverList", "{prefix}伺服器列表:");
             messages.put("serverInfo", "  - %s (名稱: %s, 權限: %s)");
@@ -127,6 +132,7 @@ public class LanguageManager {
                 "&e/mstp server list &r- 查看所有可用伺服器\n" +
                 "&e/mstp server add <伺服器配置名> [伺服器顯示名] [權限節點] &r- 添加新伺服器\n" +
                 "&e/mstp server remove <伺服器配置名> &r- 刪除伺服器\n" +
+                "&e/mstp server modify <伺服器配置名> <新顯示名> [新權限節點] &r- 修改伺服器信息\n" +
                 "&e==========================================");
         } else if ("en_us".equalsIgnoreCase(language)) {
             // English messages
@@ -158,6 +164,8 @@ public class LanguageManager {
             messages.put("serverAddFailed", "{prefix}Failed to add server!");
             messages.put("serverRemoved", "{prefix}Successfully removed server {server}");
             messages.put("serverRemoveFailed", "{prefix}Failed to remove server!");
+            messages.put("serverModified", "{prefix}Successfully modified server {server}");
+            messages.put("serverModifyFailed", "{prefix}Failed to modify server!");
             messages.put("noServers", "{prefix}No servers found!");
             messages.put("serverList", "{prefix}Server list:");
             messages.put("serverInfo", "  - %s (Name: %s, Permission: %s)");
@@ -176,6 +184,7 @@ public class LanguageManager {
                 "&e/mstp server list &r- View all available servers\n" +
                 "&e/mstp server add <server-config-name> [server-display-name] [permission-node] &r- Add new server\n" +
                 "&e/mstp server remove <server-config-name> &r- Remove server\n" +
+                "&e/mstp server modify <server-config-name> <new-display-name> [new-permission-node] &r- Modify server info\n" +
                 "&e==========================================");
         } else if ("ja_jp".equalsIgnoreCase(language)) {
             // 日本语消息
@@ -207,6 +216,8 @@ public class LanguageManager {
             messages.put("serverAddFailed", "{prefix}サーバーの追加に失敗しました!");
             messages.put("serverRemoved", "{prefix}サーバー {server} を削除しました");
             messages.put("serverRemoveFailed", "{prefix}サーバーの削除に失敗しました!");
+            messages.put("serverModified", "{prefix}サーバー {server} を修正しました");
+            messages.put("serverModifyFailed", "{prefix}サーバーの修正に失敗しました!");
             messages.put("noServers", "{prefix}サーバーが見つかりません!");
             messages.put("serverList", "{prefix}サーバー一覧:");
             messages.put("serverInfo", "  - %s (名前: %s, 権限: %s)");
@@ -225,6 +236,7 @@ public class LanguageManager {
                 "&e/mstp server list &r- 利用可能なサーバー一覧を表示\n" +
                 "&e/mstp server add <サーバー設定名> [サーバー表示名] [権限ノード] &r- 新サーバーを追加\n" +
                 "&e/mstp server remove <サーバー設定名> &r- サーバーを削除\n" +
+                "&e/mstp server modify <サーバー設定名> <新表示名> [新権限ノード] &r- サーバー情報を修正\n" +
                 "&e==========================================");
         } else if ("de_de".equalsIgnoreCase(language)) {
             // 德语消息
@@ -256,6 +268,8 @@ public class LanguageManager {
             messages.put("serverAddFailed", "{prefix}Server konnte nicht hinzugefügt werden!");
             messages.put("serverRemoved", "{prefix}Server {server} erfolgreich entfernt");
             messages.put("serverRemoveFailed", "{prefix}Server konnte nicht entfernt werden!");
+            messages.put("serverModified", "{prefix}Server {server} erfolgreich modifiziert");
+            messages.put("serverModifyFailed", "{prefix}Server konnte nicht modifiziert werden!");
             messages.put("noServers", "{prefix}Keine Server gefunden!");
             messages.put("serverList", "{prefix}Serverliste:");
             messages.put("serverInfo", "  - %s (Name: %s, Berechtigung: %s)");
@@ -274,6 +288,7 @@ public class LanguageManager {
                 "&e/mstp server list &r- Zeige alle verfügbaren Server\n" +
                 "&e/mstp server add <Server-Konfigurationsname> [Server-Anzeigename] [Berechtigungsknoten] &r- Füge neuen Server hinzu\n" +
                 "&e/mstp server remove <Server-Konfigurationsname> &r- Entferne Server\n" +
+                "&e/mstp server modify <Server-Konfigurationsname> <neuer-Anzeigename> [neuer-Berechtigungsknoten] &r- Modifiziere Server-Informationen\n" +
                 "&e==========================================");
         }
     }
