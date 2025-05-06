@@ -86,17 +86,9 @@ Server-list:
 
 ---
 
-## Compatibility Testing
+## Compatibility
 
-| Version | 1.12 | 1.16 | 1.17 | 1.18 | 1.19 | 1.20 | 1.20.6 | 1.21 |
-|------|------|------|------|------|------|------|--------|------|
-| Mohist | ❓ | ❓ | ❓ | ❓ | ❓ | ✅ | ❓ | ❓ |
-| Purpur | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Paper | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Spigot | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Bukkit | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-
-Welcome to assist developers in improving the compatibility testing list, and your name will be included in the acknowledgments!
+> **Note**: This plugin is compatible with Spigot servers version 1.12.2 and above
 
 ---
 
