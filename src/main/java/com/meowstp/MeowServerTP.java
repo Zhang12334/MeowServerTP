@@ -14,7 +14,7 @@ public class MeowServerTP extends JavaPlugin implements Listener {
         instance = this;
 
         // bstats
-        int pluginId = 25586;
+        int pluginId = 25773;
         Metrics metrics = new Metrics(this, pluginId);
 
         // 加载配置文件
