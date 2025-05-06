@@ -71,6 +71,7 @@ Server-list:
 - `/mstp server list` - View all available servers
 - `/mstp server add <server-config-name> [server-display-name] [permission-node]` - Add new server
 - `/mstp server remove <server-config-name>` - Remove server
+- `/mstp server modify <server-config-name> <new-display-name> [new-permission-node]` - Modify server information
 
 ## Permissions
 
@@ -78,9 +79,10 @@ Server-list:
 - `meowservertp.command.help` - Allow viewing help information (Default: op)
 - `meowservertp.command.send` - Allow using player teleport commands (Default: op)
 - `meowservertp.command.send.all` - Allow using all players teleport command (Default: op)
-- `meowservertp.command.server.add` - Allow adding servers (Default: op)
-- `meowservertp.command.server.remove` - Allow removing servers (Default: op)
+- `meowservertp.command.server.add` - Allow adding servers to database (Default: op)
+- `meowservertp.command.server.remove` - Allow removing servers from database (Default: op)
 - `meowservertp.command.server.list` - Allow viewing server list (Default: op)
+- `meowservertp.command.server.modify` - Allow modifying server information (Default: op)
 
 ---
 

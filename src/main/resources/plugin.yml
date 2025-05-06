@@ -32,3 +32,6 @@ permissions:
   meowservertp.command.server.list:
     description: 允许查看服务器列表
     default: op
+  meowservertp.command.server.modify:
+    description: 允许修改服务器信息
+    default: op
