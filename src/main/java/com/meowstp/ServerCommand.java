@@ -60,6 +60,9 @@ public class ServerCommand implements CommandExecutor, TabCompleter {
             case "list":
                 handleListCommand(sender);
                 return true;
+            case "modify":
+                handleModifyCommand(sender, args);
+                return true;
             default:
                 sender.sendMessage(formatMessage(getMessage("usage")));
                 return true;
@@ -196,6 +199,53 @@ public class ServerCommand implements CommandExecutor, TabCompleter {
         }
     }
 
+    /**
+     * 处理修改服务器命令
+     * @param sender 命令发送者
+     * @param args 命令参数
+     */
+    private void handleModifyCommand(CommandSender sender, String[] args) {
+        if (!sender.hasPermission("meowservertp.command.server.modify")) {
+            sender.sendMessage(formatMessage(getMessage("nopermission")));
+            return;
+        }
+
+        if (args.length < 3) {
+            sender.sendMessage(formatMessage(getMessage("usage")));
+            return;
+        }
+
+        String serverId = args[1];
+        String newName = args[2];
+        String newPermission = args.length > 3 ? args[3] : null;
+
+        if (!isServerExists(serverId)) {
+            sender.sendMessage(formatMessage(getMessage("serverNotExist"), serverId));
+            return;
+        }
+
+        if (databaseManager.isEnabled()) {
+            if (databaseManager.updateServer(serverId, newName, newPermission)) {
+                sender.sendMessage(formatMessage(getMessage("serverModified"), serverId));
+            } else {
+                sender.sendMessage(formatMessage(getMessage("serverModifyFailed")));
+            }
+        } else {
+            // 本地配置存储
+            ConfigurationSection servers = plugin.getConfig().getConfigurationSection("Server-list");
+            if (servers != null && servers.contains(serverId)) {
+                servers.set(serverId + ".Name", newName);
+                if (newPermission != null) {
+                    servers.set(serverId + ".Permission", newPermission);
+                }
+                plugin.saveConfig();
+                sender.sendMessage(formatMessage(getMessage("serverModified"), serverId));
+            } else {
+                sender.sendMessage(formatMessage(getMessage("serverNotExist"), serverId));
+            }
+        }
+    }
+
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
         if (args.length == 1) {
@@ -205,9 +255,10 @@ public class ServerCommand implements CommandExecutor, TabCompleter {
             if ("add".startsWith(input)) completions.add("add");
             if ("remove".startsWith(input)) completions.add("remove");
             if ("list".startsWith(input)) completions.add("list");
+            if ("modify".startsWith(input)) completions.add("modify");
             
             return completions;
-        } else if (args.length == 2 && args[0].equalsIgnoreCase("remove")) {
+        } else if (args.length == 2 && (args[0].equalsIgnoreCase("remove") || args[0].equalsIgnoreCase("modify"))) {
             String input = args[1].toLowerCase();
             List<String> completions = new ArrayList<>();
             
@@ -247,5 +298,18 @@ public class ServerCommand implements CommandExecutor, TabCompleter {
         // 替换颜色代码
         message = message.replace("&", "§");
         return message;
+    }
+
+    /**
+     * 检查服务器是否存在
+     * @param serverId 服务器ID
+     * @return 如果服务器存在返回true，否则返回false
+     */
+    private boolean isServerExists(String serverId) {
+        if (plugin.getConfig().getBoolean("Database.enabled", false)) {
+            return databaseManager.getServers().stream()
+                .anyMatch(serverInfo -> serverInfo.getId().equals(serverId));
+        }
+        return plugin.getConfig().contains("Server-list." + serverId);
     }
 } 

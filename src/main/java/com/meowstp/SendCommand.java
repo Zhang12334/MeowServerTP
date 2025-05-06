@@ -72,7 +72,7 @@ public class SendCommand implements CommandExecutor, TabCompleter {
             // 执行传送
             String serverName = getServerName(server);
             for (Player player : players) {
-                executeTeleport(player, server, sender);
+                executeTeleport(player, server, serverName, sender);
             }
             sender.sendMessage(formatMessage(getMessage("teleportingAll"), players.size(), serverName));
             return true;
@@ -93,7 +93,7 @@ public class SendCommand implements CommandExecutor, TabCompleter {
         // 执行传送
         String serverName = getServerName(server);
         sender.sendMessage(formatMessage(getMessage("teleportingOther"), player.getName(), serverName));
-        executeTeleport(player, server, sender);
+        executeTeleport(player, server, serverName, sender);
         return true;
     }
 
@@ -189,7 +189,8 @@ public class SendCommand implements CommandExecutor, TabCompleter {
         return serverNameConfig != null ? serverNameConfig : server;
     }
 
-    private void executeTeleport(Player player, String server, CommandSender sender) {
+    private void executeTeleport(Player player, String server, String serverName, CommandSender sender) {
+        player.sendMessage(formatMessage(getMessage("teleporting"), serverName));
         TeleportUtils.teleport(player, server, languageManager);
     }
 
