@@ -1,5 +1,5 @@
 name: MeowServerTP
-version: 1.0.6
+version: 1.0.7
 main: com.meowstp.MeowServerTP
 depend: [MeowLibs]
 softdepend: [PlaceholderAPI]

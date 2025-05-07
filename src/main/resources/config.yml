@@ -1,6 +1,8 @@
 # 数据库配置 / Database configuration
 Database:
   # 是否启用数据库存储 / Enable database storage
+  # 启用数据库存储后需使用指令对服务器进行配置，如新增/删除/修改服务器显示名/权限节点等
+  # Enable database storage, you need to use the command to configure the server, such as adding/deleting/modifying the server display name/permission node, etc.
   enabled: false
   # 数据库类型 (目前仅支持MySQL) / Database type (currently only MySQL supported)
   type: MySQL
@@ -20,6 +22,8 @@ language: zh_hans
 Prefix: '&6[MeowServerTP] &2'
 
 # 服务器列表 / Server list
+# 如启用数据库存储则插件将不会使用此处配置内容
+# If you enable database storage, the plugin will not use this configuration content
 Server-list:
   # 服务器名称 / Server name
   lobby:
