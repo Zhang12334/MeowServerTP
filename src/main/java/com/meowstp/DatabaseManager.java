@@ -3,9 +3,7 @@ package com.meowstp;
 import org.bukkit.configuration.file.FileConfiguration;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * 数据库管理器类
@@ -26,7 +24,13 @@ public class DatabaseManager {
         this.config = plugin.getConfig();
         this.languageManager = plugin.getLanguageManager();
     }
-
+    private String formatMessage(String message) {
+        // 替换前缀
+        if (message.contains("{prefix}")) {
+            message = message.replace("{prefix}", plugin.getConfig().getString("Prefix", ""));
+        }
+        return message;
+    }
     /**
      * 连接到数据库
      * 从配置文件中读取连接信息并建立连接
@@ -46,13 +50,14 @@ public class DatabaseManager {
 
             // 构建数据库连接URL
             String url = "jdbc:mysql://" + host + ":" + port + "/" + database + 
-                        "?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true";
+                        "?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true" +
+                        "&autoReconnect=true";  // 启用自动重连
             connection = DriverManager.getConnection(url, username, password);
             
             // 创建必要的数据库表
             createTables();
         } catch (SQLException e) {
-            plugin.getLogger().severe(languageManager.getMessage("databaseConnectionError") + ": " + e.getMessage());
+            plugin.getLogger().severe(formatMessage(languageManager.getMessage("databaseConnectionError") + ": " + e.getMessage()));
         }
     }
 
@@ -68,7 +73,7 @@ public class DatabaseManager {
                     "permission VARCHAR(64)" +       // 权限节点
                     ")");
         } catch (SQLException e) {
-            plugin.getLogger().severe(languageManager.getMessage("databaseTableCreationError") + ": " + e.getMessage());
+            plugin.getLogger().severe(formatMessage(languageManager.getMessage("databaseTableCreationError") + ": " + e.getMessage()));
         }
     }
 
@@ -80,7 +85,7 @@ public class DatabaseManager {
             try {
                 connection.close();
             } catch (SQLException e) {
-                plugin.getLogger().severe(languageManager.getMessage("databaseDisconnectionError") + ": " + e.getMessage());
+                plugin.getLogger().severe(formatMessage(languageManager.getMessage("databaseDisconnectionError") + ": " + e.getMessage()));
             }
         }
     }
@@ -107,7 +112,7 @@ public class DatabaseManager {
                 }
             }
         } catch (SQLException e) {
-            plugin.getLogger().severe(languageManager.getMessage("databaseGetServersError"));
+            plugin.getLogger().severe(formatMessage(languageManager.getMessage("databaseGetServersError")));
             e.printStackTrace();
         }
         return servers;
@@ -133,7 +138,7 @@ public class DatabaseManager {
             statement.executeUpdate();
             return true;
         } catch (SQLException e) {
-            plugin.getLogger().severe(languageManager.getMessage("databaseAddServerError") + ": " + e.getMessage());
+            plugin.getLogger().severe(formatMessage(languageManager.getMessage("databaseAddServerError") + ": " + e.getMessage()));
             return false;
         }
     }
@@ -158,7 +163,7 @@ public class DatabaseManager {
             statement.executeUpdate();
             return true;
         } catch (SQLException e) {
-            plugin.getLogger().severe(languageManager.getMessage("databaseUpdateServerError") + ": " + e.getMessage());
+            plugin.getLogger().severe(formatMessage(languageManager.getMessage("databaseUpdateServerError") + ": " + e.getMessage()));
             return false;
         }
     }
@@ -179,7 +184,7 @@ public class DatabaseManager {
             statement.executeUpdate();
             return true;
         } catch (SQLException e) {
-            plugin.getLogger().severe(languageManager.getMessage("databaseDeleteServerError") + ": " + e.getMessage());
+            plugin.getLogger().severe(formatMessage(languageManager.getMessage("databaseDeleteServerError") + ": " + e.getMessage()));
             return false;
         }
     }
@@ -209,7 +214,7 @@ public class DatabaseManager {
                 return statement.executeUpdate() > 0;
             }
         } catch (SQLException e) {
-            plugin.getLogger().severe(languageManager.getMessage("databaseDeleteServerError"));
+            plugin.getLogger().severe(formatMessage(languageManager.getMessage("databaseDeleteServerError")));
             e.printStackTrace();
             return false;
         }
